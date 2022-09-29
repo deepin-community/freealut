@@ -1,0 +1,4 @@
+000_configure.diff
+001_freebsd_pthread.diff
+005_am_maintainer_mode.diff
+006_findutils_syntax.diff

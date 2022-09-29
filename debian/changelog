@@ -1,0 +1,155 @@
+freealut (1.1.0-6) UNRELEASED; urgency=medium
+
+  * update
+
+ -- Debian Games Team <pkg-games-devel@lists.alioth.debian.org>  Thu, 12 May 2022 11:24:47 +0800
+
+freealut (1.1.0-6) unstable; urgency=medium
+
+  * Team upload.
+  * debian/control:
+    + Update homepage field and use to mirror on GitHub since
+      the original website no longer provides information.
+    + Update Vcs-* fields to use git packaging repo under Salsa
+      games-team group.
+    + Bump debhelper compat to v12.
+    + Bump Standards-Version to 4.4.1.
+  * debian/rules: Enable full hardening.
+  * debian/source/options: Removed, no longer needed.
+
+ -- Boyuan Yang <byang@debian.org>  Thu, 03 Oct 2019 14:34:46 -0400
+
+freealut (1.1.0-5) unstable; urgency=medium
+
+  * Team upload.
+  * Drop Multi-Arch: same from libalut-dev. (Closes: #760202)
+
+ -- Vincent Cheng <vcheng@debian.org>  Mon, 01 Sep 2014 14:01:16 -0700
+
+freealut (1.1.0-4) unstable; urgency=low
+
+  * Team upload.
+
+  [ Evgeni Golov ]
+  * Correct Vcs-* URLs to point to anonscm.debian.org
+
+  [ Logan Rosen ]
+  * Use dh-autoreconf instead of autotools-dev to also fix FTBFS on ppc64el by
+    getting new libtool macros (still updates config.{sub,guess}).
+    (Closes: #733473)
+
+  [ Vincent Cheng ]
+  * Drop debian/patches/100_rebootstrap.diff.
+  * Drop deprecated DMUA field in d/control.
+  * Remove usage of deprecated findutils syntax. (Closes: #711706, #724771)
+  * Multiarch-ify package. (Closes: #691943)
+  * Update Standards version to 3.9.5.
+
+ -- Vincent Cheng <vcheng@debian.org>  Sat, 30 Aug 2014 15:40:57 -0700
+
+freealut (1.1.0-3) unstable; urgency=low
+
+  [ Peter Pentchev ]
+  * Andres Mejia fixed the watch file back in 2009.  Closes: #551410
+  * Remove Thierry Reding from Uploaders.  Closes: #572543
+  * Convert to the 3.0 (quilt) source format.
+  * Update the control file:
+    - drop the redundant "libs" section on the libalut0 package
+    - add misc:Depends to the binary packages
+    - no need to depend on a x.x.x-1 revision
+  * Add DEP 3 headers to all the patches.
+  * Bump the debhelper compatibility version to 8 and minimize the rules
+    file using override rules.
+  * Remove some cruft from the rules file.
+  * Use dpkg-buildflags from dpkg-dev 1.15.7 to obtain the default CFLAGS,
+    CPPFLAGS and LDFLAGS.
+  * Bump Standards-Version to 3.9.1 with no further changes.
+  * Convert the copyright file to rev. 165 of the DEP 5 candidate format and
+    add my copyright notice.
+  * Add a symbols file for libalut0.
+  * Add myself to Uploaders.
+  * Use dh --with autotools_dev to update config.sub and config.guess.
+
+  [ Ansgar Burchardt ]
+  * debian/control: Add DM-Upload-Allowed: yes.
+
+ -- Peter Pentchev <roam@ringlet.net>  Thu, 31 Mar 2011 13:58:11 +0300
+
+freealut (1.1.0-2) unstable; urgency=low
+
+  [ Eddy Petrișor ]
+  * removed myself from the Uploaders list
+
+  [ Jon Dowland ]
+  * add Homepage: control field to source stanza
+
+  [ Eddy Petrișor ]
+  * add missing Vcs-Svn headers
+
+  [ Ansgar Burchardt ]
+  * Remove Homepage semi-field from description
+
+  [ Reinhard Tartler ]
+  * No longer provide /usr/lib/libalut.la. It's not needed since dependent
+    packages can use the provided freealut.pc file with pkg-config
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sun, 06 Jul 2008 20:55:23 +0200
+
+freealut (1.1.0-1) unstable; urgency=low
+
+  [ Reinhard Tartler ]
+  * New upstream release, featuring: (Closes: #378974)
+    + Added some fragile logic to find the right path to the OpenAL
+      headers.
+    + Bumped the package version to 1.1.0 and the library version to
+      1:0:1 (i.e. a backwards compatible version, only with new features).
+    + Conforms to the ALUT specification 1.1.0 now (added two memory
+      loaders).
+  * Updated shlibs file
+  * install freealut-config in libalut-dev
+  * Bumped Standards Version to 3.7.2 (no changes needed)
+
+  [ Stefan Potyra ]
+  * Add dependency for libopenal-dev against libalut-dev.
+
+  [ Eddy Petrișor ]
+  * debian/patches/001_freebsd_pthread.diff:
+    + small tweak to configure.ac to remove FTBFS on GNU/kFreeBSD, thanks to
+      Petr Salinger <Petr.Salinger@seznam.cz> for the patch (Closes: #400717)
+      Severity is not meduim since the arch is not released.
+  * ran autoupdate
+  * added libtool as a dependency so the package builds properly
+  * added myself to uploaders
+  * drop usage of ${source-Version} in favour of new ${binary:Version}
+  * added build dependency on dpkg (>= 1.13.19)
+
+  [ Sam Hocevar ]
+  * Switch packaging to use quilt.
+
+  * debian/control:
+    + Drop autotools-dev and libtool build-dependencies.
+  * debian/freealut-config.1:
+    + Add a manpage for freealut-config.
+
+  * debian/patches/000_configure.diff:
+    + Import previous changes to configure.ac.
+
+  * debian/patches/001_am_maintainer_mode.diff:
+    + Disable maintainer mode to avoid clock skews during builds.
+
+  * debian/patches/100_rebootstrap.diff:
+    + Rebootstrap package.
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Tue, 20 Feb 2007 13:02:12 +0100
+
+freealut (1.0.1-1) unstable; urgency=low
+
+  [ Thierry Reding ]
+  * Initial release. (Closes: #353263)
+
+  [ Reinhard Tartler ]
+  * Add versioned build depends to libopenal-dev (>= 1:0.0.8-1) to ensure that
+    it gets build with the right openal version. We want only one transition
+  * polish debian/copyright
+
+ -- Reinhard Tartler <siretart@tauware.de>  Fri, 24 Feb 2006 11:27:32 +0100

@@ -1,0 +1,37 @@
+Source: freealut
+Priority: optional
+Maintainer: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
+Uploaders: Sam Hocevar <sho@debian.org>, Peter Pentchev <roam@ringlet.net>
+Build-Depends:
+ debhelper-compat (= 12),
+ libopenal-dev (>= 1:0.0.8),
+Standards-Version: 4.4.1
+Section: libs
+Homepage: https://github.com/vancegroup/freealut
+Vcs-Git: https://salsa.debian.org/games-team/freealut.git
+Vcs-Browser: https://salsa.debian.org/games-team/freealut
+
+Package: libalut0
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: OpenAL Utility Toolkit
+ freealut is a free implementation of OpenAL's ALUT standard. ALUT is a set of
+ portable functions which remove the annoying details of getting an audio
+ application started. It is the OpenAL counterpart of what GLUT is for OpenGL.
+
+Package: libalut-dev
+Section: libdevel
+Architecture: any
+Depends:
+ libalut0 (= ${binary:Version}),
+ libopenal-dev (>= 1:0.0.8),
+ ${misc:Depends}
+Description: OpenAL Utility Toolkit development files
+ freealut is a free implementation of OpenAL's ALUT standard. ALUT is a set of
+ portable functions which remove the annoying details of getting an audio
+ application started. It is the OpenAL counterpart of what GLUT is for OpenGL.
+ .
+ This package contains libraries and headers suitable for software development
+ with ALUT.
